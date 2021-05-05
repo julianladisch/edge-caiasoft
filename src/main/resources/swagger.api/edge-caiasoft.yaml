@@ -3,14 +3,65 @@ info:
   title: Edge CasiaSoft API
   version: v1
 servers:
-  - url: /asrService/asr/
+  - url: /caiasoftService/
 paths:
-  /lookupNewAsrItems:
+  /ItemBarcodes/{itemBarcode}/accessioned/{remoteStorageConfigurationId}:
     get:
       responses:
         '200':
           description: Success response
           content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/accessionItem"
+        '500':
+          description: Internal server error
+          content:
             text/plain:
               schema:
                 type: string
+                example: Internal server error
+      operationId: getAccessionItem
+      parameters:
+        - $ref: "#/components/parameters/item-barcode"
+        - $ref: "#/components/parameters/remote-storage-id"
+        - $ref: "#/components/parameters/x-okapi-token"
+        - $ref: "#/components/parameters/x-okapi-tenant"
+components:
+  schemas:
+    accessionItem:
+      $ref: schemas/accessionItem.json
+    accessionQueues:
+      allOf:
+        - $ref: schemas/baseCollection.json
+        - type: object
+          properties:
+            accessions:
+              type: array
+              items:
+                $ref: "#/components/schemas/accessionItem"
+  parameters:
+    item-barcode:
+      name: itemBarcode
+      in: path
+      required: true
+      schema:
+        type: string
+    remote-storage-id:
+      name: remoteStorageConfigurationId
+      in: path
+      required: true
+      schema:
+        type: string
+    x-okapi-token:
+      name: x-okapi-token
+      in: header
+      required: true
+      schema:
+        type: string
+    x-okapi-tenant:
+      name: x-okapi-tenant
+      in: header
+      required: true
+      schema:
+        type: string

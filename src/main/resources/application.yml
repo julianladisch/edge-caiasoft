@@ -1,5 +1,9 @@
 Dokapi_url: http://localhost:9130
 okapi_url: ${Dokapi_url}
+Dsecure_store_props: src/main/resources/ephemeral.properties
+secure_store_props: ${Dsecure_store_props}
+Dsecure_store: Ephemeral
+secure_store: ${Dsecure_store}
 spring:
   application:
     name: edge-caiasoft
