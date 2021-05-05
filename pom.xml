@@ -27,6 +27,7 @@
     <openapi-generator.version>5.0.1</openapi-generator.version>
     <mapstruct.version>1.4.1.Final</mapstruct.version>
     <edge-dematic.yaml.file>src/main/resources/swagger.api/edge-caiasoft.yaml</edge-dematic.yaml.file>
+    <sonar.exclusions>src/main/java/org/folio/ed/domain/**</sonar.exclusions>
     <edge-common-spring.version>1.0.0-SNAPSHOT</edge-common-spring.version>
   </properties>
 
@@ -40,7 +41,7 @@
     <dependency>
       <groupId>org.folio</groupId>
       <artifactId>edge-common-spring</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>${edge-common-spring.version}</version>
     </dependency>
 
     <dependency>

@@ -27,7 +27,7 @@ public class RemoteStorageServiceTest {
   private RemoteStorageService remoteStorageService;
 
   @Test
-  public void testGetAccessionItem() {
+  void testGetAccessionItem() {
     var result = new ResultList<AccessionItem>();
     var accessionItem = new AccessionItem();
     accessionItem.setId("accession_id");
