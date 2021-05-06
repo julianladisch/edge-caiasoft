@@ -3,7 +3,6 @@ package org.folio.ed.service;
 import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 import org.folio.ed.domain.dto.AccessionRequest;
-import org.folio.ed.domain.dto.ResultList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,13 +27,11 @@ public class RemoteStorageServiceTest {
 
   @Test
   void testGetAccessionItem() {
-    var result = new ResultList<AccessionItem>();
     var accessionItem = new AccessionItem();
     accessionItem.setId("accession_id");
-    result.setResult(Collections.singletonList(accessionItem));
 
     when(remoteStorageClient.getAccessionItem(isA(AccessionRequest.class), isA(String.class), isA(String.class)))
-      .thenReturn(result);
+      .thenReturn(accessionItem);
 
     remoteStorageService.getAccessionItem("itemBarcode", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
     verify(remoteStorageClient, times(1)).getAccessionItem(isA(AccessionRequest.class), isA(String.class), isA(String.class));

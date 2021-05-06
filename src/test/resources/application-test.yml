@@ -1,0 +1,25 @@
+okapi_url: http://localhost:3333
+spring:
+  application:
+    name: edge-caiasoft
+  jackson:
+    default-property-inclusion: non_null
+  liquibase:
+    enabled: false
+  flyway:
+    enabled: false
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: OFF
+
+folio.tenant.validation.enabled: false
+
