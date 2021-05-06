@@ -33,7 +33,6 @@ components:
       $ref: schemas/accessionItem.json
     accessionQueues:
       allOf:
-        - $ref: schemas/baseCollection.json
         - type: object
           properties:
             accessions:
