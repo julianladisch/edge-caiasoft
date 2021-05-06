@@ -1,13 +1,13 @@
 {
-  "description": "Accession queue",
+  "description": "Accession item",
   "type": "object",
   "properties": {
     "id": {
-      "description": "Accession queue id",
+      "description": "Accesion itme id",
       "$ref": "uuid.json"
     },
     "itemBarcode": {
-      "description": "Accession queue name",
+      "description": "Item barcode",
       "type": "string"
     },
     "createdDateTime": {
