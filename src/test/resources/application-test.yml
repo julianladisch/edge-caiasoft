@@ -1,9 +1,4 @@
-Dokapi_url: http://localhost:9130
-okapi_url: ${Dokapi_url}
-Dsecure_store_props: src/main/resources/ephemeral.properties
-secure_store_props: ${Dsecure_store_props}
-Dsecure_store: Ephemeral
-secure_store: ${Dsecure_store}
+okapi_url: http://localhost:3333
 spring:
   application:
     name: edge-caiasoft
@@ -13,10 +8,7 @@ spring:
     enabled: false
   flyway:
     enabled: false
-management:
-  endpoints:
-    web:
-      base-path: /admin
+
 feign:
   client:
     config:
@@ -29,5 +21,5 @@ logging:
       springframework:
         cache: OFF
 
-server.port: 8081
 folio.tenant.validation.enabled: false
+

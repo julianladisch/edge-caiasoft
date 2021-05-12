@@ -27,7 +27,9 @@
     <openapi-generator.version>5.0.1</openapi-generator.version>
     <mapstruct.version>1.4.1.Final</mapstruct.version>
     <edge-dematic.yaml.file>src/main/resources/swagger.api/edge-caiasoft.yaml</edge-dematic.yaml.file>
-    <edge-common.version>2.0.3</edge-common.version>
+    <sonar.exclusions>src/main/java/org/folio/ed/domain/**</sonar.exclusions>
+    <edge-common-spring.version>1.0.0-SNAPSHOT</edge-common-spring.version>
+    <wiremock.version>2.27.2</wiremock.version>
   </properties>
 
   <dependencies>
@@ -39,14 +41,8 @@
 
     <dependency>
       <groupId>org.folio</groupId>
-      <artifactId>edge-common</artifactId>
-      <version>${edge-common.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.mockito</groupId>
-          <artifactId>mockito-all</artifactId>
-        </exclusion>
-      </exclusions>
+      <artifactId>edge-common-spring</artifactId>
+      <version>${edge-common-spring.version}</version>
     </dependency>
 
     <dependency>
@@ -134,7 +130,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.integration</groupId>
       <artifactId>spring-integration-event</artifactId>
@@ -145,6 +140,13 @@
       <artifactId>spring-integration-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.github.tomakehurst</groupId>
+      <artifactId>wiremock-standalone</artifactId>
+      <version>${wiremock.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

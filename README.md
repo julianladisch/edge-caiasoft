@@ -1,6 +1,5 @@
 # edge-caiasoft
 
-
 Copyright (C) 2021 The Open Library Foundation
 
 This software is distributed under the terms of the Apache License,
@@ -10,6 +9,13 @@ Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
 The purpose of this edge API is to bridge the gap between CaiaSoft remote storage provider and FOLIO.
 
 ## Additional information
+
+### API Details
+API provides the following URLs for working with remote storage configurations:
+
+| Method | URL| Description | 
+|---|---|---|
+| GET | /caiasoftService/ItemBarcodes/{itemBarcode}/accessioned/{remoteStorageConfigurationId} | The polling API for accessions |
 
 ### Required Permissions
 Institutional users should be granted the following permissions in order to use this edge API:
