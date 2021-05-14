@@ -6,6 +6,7 @@ import org.folio.ed.domain.dto.AccessionItem;
 
 import org.folio.ed.domain.dto.AccessionRequest;
 import org.folio.ed.domain.dto.Configuration;
+import org.folio.ed.domain.dto.RetrievalQueueRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,5 +34,9 @@ public class RemoteStorageService {
         }
       });
     return configurations;
+  }
+
+  public List<RetrievalQueueRecord> getRetrievalQueueRecords(String storageId, String tenantId, String okapiToken) {
+    return remoteStorageClient.getRetrievalsByQuery(storageId, false, Integer.MAX_VALUE, tenantId, okapiToken).getResult();
   }
 }
