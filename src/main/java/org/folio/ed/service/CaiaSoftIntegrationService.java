@@ -37,7 +37,7 @@ public class CaiaSoftIntegrationService {
     registerRetrievalQueueRecordFlow(configuration);
   }
 
-  private void removeExistingFlows() {
+  protected void removeExistingFlows() {
     integrationFlowContext.getRegistry().keySet().forEach(key -> {
       integrationFlowContext.getRegistrationById(key).stop();
       integrationFlowContext.remove(key);
