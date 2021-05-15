@@ -11,8 +11,8 @@ public class ConfigurationHelpers {
       case "minutes" : return delay * TimeUnit.MINUTES.toMillis(1);
       case "hours" : return delay * TimeUnit.HOURS.toMillis(1);
       case "days" : return delay * TimeUnit.DAYS.toMillis(1);
-      case "weeks" : return (long) delay * TimeUnit.DAYS.toMillis(7);
-      case "months": return (long) delay * TimeUnit.DAYS.toMillis(30);
+      case "weeks" : return delay * TimeUnit.DAYS.toMillis(7);
+      case "months": return delay * TimeUnit.DAYS.toMillis(30);
       default: return 10_000L;
     }
   }

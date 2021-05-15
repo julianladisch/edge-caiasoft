@@ -3,7 +3,9 @@ package org.folio.ed;
 import org.folio.ed.controller.AccessionControllerTest;
 import org.folio.ed.security.SecureTenantsProducerTest;
 import org.folio.ed.security.TenantAwareAWSParamStoreTest;
+import org.folio.ed.service.CaiaSoftSecurityManagerServiceTest;
 import org.folio.ed.service.RemoteStorageServiceTest;
+import org.folio.ed.util.ConfigurationHelpersTest;
 import org.junit.jupiter.api.Nested;
 
 public class TestSuite {
@@ -21,5 +23,13 @@ public class TestSuite {
 
   @Nested
   class SecureTenantsProducerTestNested extends SecureTenantsProducerTest {
+  }
+
+  @Nested
+  class ConfigurationHelpersTestNested extends ConfigurationHelpersTest {
+  }
+
+  @Nested
+  class CaiaSoftSecurityManagerServiceTesNested extends CaiaSoftSecurityManagerServiceTest {
   }
 }

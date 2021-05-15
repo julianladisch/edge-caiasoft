@@ -3,12 +3,20 @@ package org.folio.ed.service;
 import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 import org.folio.ed.domain.dto.AccessionRequest;
+import org.folio.ed.domain.dto.Configuration;
+import org.folio.ed.domain.dto.ResultList;
+import org.folio.ed.domain.dto.RetrievalQueueRecord;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -33,5 +41,33 @@ public class RemoteStorageServiceTest {
 
     remoteStorageService.getAccessionItem("itemBarcode", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
     verify(remoteStorageClient, times(1)).getAccessionItem(isA(AccessionRequest.class), isA(String.class), isA(String.class));
+  }
+
+  @Test
+  void testGetCaiaSoftConfigurations() {
+    var result = new ResultList<Configuration>();
+    var firstConfiguration = new Configuration();
+    firstConfiguration.setProviderName("CAIA_SOFT");
+    var secondConfiguration = new Configuration();
+    secondConfiguration.setProviderName("DEMATIC");
+    result.setResult(List.of(firstConfiguration, secondConfiguration));
+
+    when(remoteStorageClient.getStorageConfigurations(isA(String.class), isA(String.class))).thenReturn(result);
+
+    var configurations = remoteStorageService.getCaiaSoftConfigurations("tenantId", "okapiToken");
+    assertEquals(1, configurations.size());
+    var actual = configurations.get(0);
+    assertEquals("CAIA_SOFT", actual.getProviderName());
+  }
+
+  @Test
+  void testGetRetrievalQueueRecords() {
+    var result = new ResultList<RetrievalQueueRecord>();
+    result.setResult(Collections.singletonList(new RetrievalQueueRecord()));
+
+    when(remoteStorageClient.getRetrievalsByQuery(isA(String.class), eq(false), eq(Integer.MAX_VALUE), isA(String.class), isA(String.class))).thenReturn(result);
+
+    var actual = remoteStorageService.getRetrievalQueueRecords("storageId", "tenantId", "okapiToken");
+    assertEquals(1, actual.size());
   }
 }
