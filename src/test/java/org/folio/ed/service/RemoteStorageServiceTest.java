@@ -3,6 +3,7 @@ package org.folio.ed.service;
 import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 import org.folio.ed.domain.dto.AccessionRequest;
+import org.folio.ed.domain.dto.CheckInRequest;
 import org.folio.ed.domain.dto.Configuration;
 import org.folio.ed.domain.dto.ResultList;
 import org.folio.ed.domain.dto.RetrievalQueueRecord;
@@ -14,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -41,6 +43,13 @@ public class RemoteStorageServiceTest {
 
     remoteStorageService.getAccessionItem("itemBarcode", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
     verify(remoteStorageClient, times(1)).getAccessionItem(isA(AccessionRequest.class), isA(String.class), isA(String.class));
+  }
+
+  @Test
+  void testCheckInByHoldId() {
+    remoteStorageService.checkInByHoldId("be16bad8-2a30-4f1c-bee6-f653ded15627", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
+    verify(remoteStorageClient, times(1)).checkInByHoldId(eq("remoteStorageConfigurationId"),
+      eq(new CheckInRequest(UUID.fromString("be16bad8-2a30-4f1c-bee6-f653ded15627"))), eq("xOkapiTenant"), eq("xOkapiToken"));
   }
 
   @Test

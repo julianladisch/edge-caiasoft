@@ -65,6 +65,28 @@
           "Content-Type": "application/json"
         }
       }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/remote-storage/de17bad7-2a30-4f1c-bee5-f653ded15629/checkInItemByHoldId",
+
+        "headers" : {
+          "x-okapi-token": {
+            "equalTo": "test_token"
+          },
+          "x-okapi-tenant": {
+            "equalTo": "test_tenant"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "Check-in was done for item with holdId de58bad9-1a31-5f1c-bee6-f653ded15629",
+        "headers": {
+          "Content-Type": "text/plain"
+        }
+      }
     }
   ]
 }

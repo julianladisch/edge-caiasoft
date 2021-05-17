@@ -9,7 +9,7 @@ paths:
     get:
       responses:
         '200':
-          description: Success response
+          description: Success get accession item
           content:
             application/json:
               schema:
@@ -24,6 +24,28 @@ paths:
       operationId: getAccessionItem
       parameters:
         - $ref: "#/components/parameters/item-barcode"
+        - $ref: "#/components/parameters/remote-storage-id"
+        - $ref: "#/components/parameters/x-okapi-token"
+        - $ref: "#/components/parameters/x-okapi-tenant"
+  /Requests/{requestId}/route/{remoteStorageConfigurationId}:
+    post:
+      responses:
+        '200':
+          description: Success check-in by requiestId and remoteStorageConfigurationId
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: Internal server error
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Internal server error
+      operationId: checkInByHoldId
+      parameters:
+        - $ref: "#/components/parameters/request-id"
         - $ref: "#/components/parameters/remote-storage-id"
         - $ref: "#/components/parameters/x-okapi-token"
         - $ref: "#/components/parameters/x-okapi-tenant"
@@ -48,6 +70,12 @@ components:
         type: string
     remote-storage-id:
       name: remoteStorageConfigurationId
+      in: path
+      required: true
+      schema:
+        type: string
+    request-id:
+      name: requestId
       in: path
       required: true
       schema:

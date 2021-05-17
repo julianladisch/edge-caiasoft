@@ -5,12 +5,15 @@ import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 
 import org.folio.ed.domain.dto.AccessionRequest;
+import org.folio.ed.domain.dto.CheckInRequest;
 import org.folio.ed.domain.dto.Configuration;
 import org.folio.ed.domain.dto.RetrievalQueueRecord;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,10 @@ public class RemoteStorageService {
 
   public AccessionItem getAccessionItem(String itemBarcode, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
     return remoteStorageClient.getAccessionItem(new AccessionRequest(remoteStorageConfigurationId, itemBarcode), xOkapiTenant, xOkapiToken);
+  }
+
+  public ResponseEntity<String> checkInByHoldId(String requestId, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
+    return remoteStorageClient.checkInByHoldId(remoteStorageConfigurationId, new CheckInRequest(UUID.fromString(requestId)), xOkapiTenant, xOkapiToken);
   }
 
   public List<Configuration> getCaiaSoftConfigurations(String tenantId, String okapiToken) {
