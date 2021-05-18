@@ -46,4 +46,8 @@ public class RemoteStorageService {
   public List<RetrievalQueueRecord> getRetrievalQueueRecords(String storageId, String tenantId, String okapiToken) {
     return remoteStorageClient.getRetrievalsByQuery(storageId, false, Integer.MAX_VALUE, tenantId, okapiToken).getResult();
   }
+
+  public ResponseEntity<String> setRetrieved(String itemBarcode, String tenantId, String okapiToken) {
+    return remoteStorageClient.setRetrievalByBarcode(itemBarcode, tenantId, okapiToken);
+  }
 }

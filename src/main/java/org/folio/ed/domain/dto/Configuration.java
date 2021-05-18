@@ -12,6 +12,7 @@ public class Configuration {
   private String statusUrl;
   private Integer accessionDelay;
   private String accessionTimeUnit;
+  private String apiKey;
 
   @JsonIgnore
   private String tenantId;
