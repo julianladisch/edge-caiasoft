@@ -56,13 +56,13 @@ public class RetrievalQueueRecordHandlerTest {
 
     retrievalQueueRecordHandler.handle(record, configuration);
 
-    verify(remoteStorageService, times(1)).setRetrieved(eq("itemBarcode"), eq("tenantId"), eq("okapiToken"));
+    verify(remoteStorageService, times(1)).setRetrieved("itemBarcode", "tenantId", "okapiToken");
   }
 
   @Test
   void testHandleIfCaiaSoftResponseStatusNotOk() {
     var configuration = new Configuration();
-    configuration.setStatusUrl("url");
+    configuration.setUrl("url");
     configuration.setApiKey("apiKey");
     configuration.setTenantId("tenantId");
     var record = new RetrievalQueueRecord();

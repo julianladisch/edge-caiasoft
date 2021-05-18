@@ -20,6 +20,7 @@ import java.util.UUID;
 public class RemoteStorageService {
 
   private static final String CAIA_SOFT_NAME = "CAIA_SOFT";
+
   private final RemoteStorageClient remoteStorageClient;
 
   public AccessionItem getAccessionItem(String itemBarcode, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
@@ -31,7 +32,7 @@ public class RemoteStorageService {
   }
 
   public List<Configuration> getCaiaSoftConfigurations(String tenantId, String okapiToken) {
-    List<Configuration> configurations = new ArrayList<>();
+    var configurations = new ArrayList<Configuration>();
     remoteStorageClient.getStorageConfigurations(tenantId, okapiToken)
       .getResult()
       .forEach(configuration -> {
