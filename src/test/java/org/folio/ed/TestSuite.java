@@ -2,6 +2,7 @@ package org.folio.ed;
 
 import org.folio.ed.controller.AccessionControllerTest;
 import org.folio.ed.controller.CheckInByHoldIdControllerTest;
+import org.folio.ed.handler.RetrievalQueueRecordHandlerTest;
 import org.folio.ed.security.SecureTenantsProducerTest;
 import org.folio.ed.security.TenantAwareAWSParamStoreTest;
 import org.folio.ed.service.CaiaSoftIntegrationServiceTest;
@@ -41,5 +42,9 @@ public class TestSuite {
 
   @Nested
   class CheckInByHoldIdControllerTestNested extends CheckInByHoldIdControllerTest {
+  }
+
+  @Nested
+  class RetrievalQueueRecordHandlerNested extends RetrievalQueueRecordHandlerTest {
   }
 }

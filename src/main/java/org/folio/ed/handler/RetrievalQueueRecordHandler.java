@@ -30,23 +30,23 @@ public class RetrievalQueueRecordHandler {
   private final CaiaSoftSecurityManagerService sms;
   private final RemoteStorageService remoteStorageService;
 
-  public Object handle(RetrievalQueueRecord record, Configuration configuration) {
-    log.info("Handle retrieval record item barcode {} and request id {}", record.getItemBarcode(), record.getHoldId());
+  public Object handle(RetrievalQueueRecord retrievalRecord, Configuration configuration) {
+    log.info("Handle retrieval record item barcode {} and request id {}", retrievalRecord.getItemBarcode(), retrievalRecord.getHoldId());
     var headers = new HttpHeaders();
     headers.add(CAIA_SOFT_API_KEY_HEADER_NAME, configuration.getApiKey());
-    var caiaSoftRequest = getCaiaSoftRequest(record);
+    var caiaSoftRequest = getCaiaSoftRequest(retrievalRecord);
     var url = configuration.getUrl() + CAIA_SOFT_CIRCULATION_REQUEST_PATH;
     var response = post(url, headers, caiaSoftRequest);
     if (response.getStatusCode() == HttpStatus.OK) {
       var okapiToken = sms.getConnectionParameters(configuration.getTenantId()).getOkapiToken();
-      remoteStorageService.setRetrieved(record.getItemBarcode(), configuration.getTenantId(), okapiToken);
-      log.info("Retrieval record with item barcode {} and request id {} set retrieved", record.getItemBarcode(), record.getHoldId());
+      remoteStorageService.setRetrieved(retrievalRecord.getItemBarcode(), configuration.getTenantId(), okapiToken);
+      log.info("Retrieval record with item barcode {} and request id {} set retrieved", retrievalRecord.getItemBarcode(), retrievalRecord.getHoldId());
     }
     return null;
   }
 
-  private CaiaSoftRequest getCaiaSoftRequest(RetrievalQueueRecord record) {
-    var requestItem = CaiaSoftRequestItem.of(record.getItemBarcode(), record.getRequestType(), record.getHoldId());
+  private CaiaSoftRequest getCaiaSoftRequest(RetrievalQueueRecord retrievalRecord) {
+    var requestItem = CaiaSoftRequestItem.of(retrievalRecord.getItemBarcode(), retrievalRecord.getRequestType(), retrievalRecord.getHoldId());
     return CaiaSoftRequest.of(Collections.singletonList(requestItem));
   }
 
