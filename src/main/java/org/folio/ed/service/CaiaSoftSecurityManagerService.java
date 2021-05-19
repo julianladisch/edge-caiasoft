@@ -13,12 +13,11 @@ import javax.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
-import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toSet;
 import static org.folio.edge.api.utils.util.PropertiesUtil.getProperties;
 
 @Service
@@ -41,15 +40,15 @@ public class CaiaSoftSecurityManagerService {
   private String caiaSoftTenants;
 
   @Getter
-  private Map<String, String> caiaSoftTenantsUserMap = new HashMap<>();
+  private Set<String> caiaSoftUserTenants = new HashSet<>();
 
   @PostConstruct
   public void init() {
     var secureStoreProps = getProperties(secureStorePropsFile);
     var secureStore = SecureStoreFactory.getSecureStore(secureStoreType, secureStoreProps);
     var tenants = SecureTenantsProducer.getTenants(secureStoreProps, secureStore, caiaSoftTenants);
-    tenants.ifPresent(tenantsStr -> caiaSoftTenantsUserMap = Arrays.stream(COMMA.split(tenantsStr))
-      .collect(toMap(Function.identity(), tenant -> CAIA_SOFT_CLIENT_AND_USERNAME)));
+    tenants.ifPresent(tenantsStr -> caiaSoftUserTenants = Arrays.stream(COMMA.split(tenantsStr))
+      .collect(toSet()));
   }
 
   public ConnectionSystemParameters getConnectionParameters(String tenantId) {

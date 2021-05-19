@@ -24,8 +24,7 @@ public class CaiaSoftIntegrationService {
   @Scheduled(fixedDelayString = "${configurations.update.timeframe}")
   public void updateIntegrationFlows() {
     removeExistingFlows();
-    var tenantsUsersMap = sms.getCaiaSoftTenantsUserMap();
-    for (String tenantId : tenantsUsersMap.keySet()) {
+    for (String tenantId : sms.getCaiaSoftUserTenants()) {
       for (Configuration configuration : remoteStorageService.getCaiaSoftConfigurations(tenantId, sms.getConnectionParameters(tenantId).getOkapiToken())) {
         createFlows(configuration);
       }
