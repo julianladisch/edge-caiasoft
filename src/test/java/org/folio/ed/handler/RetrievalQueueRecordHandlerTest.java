@@ -46,6 +46,7 @@ public class RetrievalQueueRecordHandlerTest {
     record.setItemBarcode("itemBarcode");
     record.setRequestType("requestType");
     record.setHoldId("holdId");
+    record.setPickupLocation("pickupLocation");
     var responseEntity = new ResponseEntity<>("OK", HttpStatus.OK);
     var connectionSystemParameters = new ConnectionSystemParameters();
     connectionSystemParameters.setTenantId("tenantId");
@@ -69,6 +70,7 @@ public class RetrievalQueueRecordHandlerTest {
     record.setItemBarcode("itemBarcode");
     record.setRequestType("requestType");
     record.setHoldId("holdId");
+    record.setPickupLocation("pickupLocation");
     var responseEntity = new ResponseEntity<>("ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
 
     when(restTemplate.exchange(anyString(), eq(HttpMethod.POST), any(), ArgumentMatchers.<Class<String>>any())).thenReturn(responseEntity);

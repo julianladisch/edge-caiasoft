@@ -46,7 +46,8 @@ public class RetrievalQueueRecordHandler {
   }
 
   private CaiaSoftRequest getCaiaSoftRequest(RetrievalQueueRecord retrievalRecord) {
-    var requestItem = CaiaSoftRequestItem.of(retrievalRecord.getItemBarcode(), retrievalRecord.getRequestType(), retrievalRecord.getHoldId());
+    var requestItem = CaiaSoftRequestItem.of(retrievalRecord.getHoldId(),
+      retrievalRecord.getRequestType(), retrievalRecord.getItemBarcode(), retrievalRecord.getPickupLocation());
     return CaiaSoftRequest.of(Collections.singletonList(requestItem));
   }
 

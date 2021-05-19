@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
 public class CaiaSoftRequestItem {
-  private String barcode;
-  @JsonProperty("request_type")
-  private String requestType;
   @JsonProperty("request_id")
   private String requestId;
+  @JsonProperty("request_type")
+  private String requestType;
+  private String barcode;
+  private String stop;
 }

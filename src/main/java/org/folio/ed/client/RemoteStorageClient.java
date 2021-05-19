@@ -35,7 +35,7 @@ public interface RemoteStorageClient {
 
   @GetMapping(path = "/retrievals", produces = "application/json")
   ResultList<RetrievalQueueRecord> getRetrievalsByQuery(@RequestParam("storageId") String storageId,
-                                                        @RequestParam("retrieved") boolean retrieved, @RequestParam("limit") int limit, @RequestHeader(TENANT) String tenantId,
+                                                        @RequestParam("retrieved") Boolean retrieved, @RequestParam("limit") int limit, @RequestHeader(TENANT) String tenantId,
                                                         @RequestHeader(TOKEN) String okapiToken);
   @PutMapping("/retrievals/barcode/{barcode}")
   ResponseEntity<String> setRetrievalByBarcode(@PathVariable("barcode") String barcode, @RequestHeader(TENANT) String tenantId,
