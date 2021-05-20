@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +24,7 @@ import java.util.Collections;
 @Log4j2
 public class RetrievalQueueRecordHandler {
 
-  private static final String CAIA_SOFT_CIRCULATION_REQUEST_PATH = "/api/circrequests/v1/";
+  private static final String CAIA_SOFT_CIRCULATION_REQUEST_PATH = "api/circrequests/v1/";
   private static final String CAIA_SOFT_API_KEY_HEADER_NAME = "X-API-Key";
 
   private final RestTemplate restTemplate;
@@ -34,15 +35,21 @@ public class RetrievalQueueRecordHandler {
     log.info("Handle retrieval record item barcode {} and request id {}", retrievalRecord.getItemBarcode(), retrievalRecord.getHoldId());
     var headers = new HttpHeaders();
     headers.add(CAIA_SOFT_API_KEY_HEADER_NAME, configuration.getApiKey());
+    headers.setContentType(MediaType.APPLICATION_JSON);
     var caiaSoftRequest = getCaiaSoftRequest(retrievalRecord);
-    var url = configuration.getUrl() + CAIA_SOFT_CIRCULATION_REQUEST_PATH;
-    var response = post(url, headers, caiaSoftRequest);
+    var caiaSoftCircUrl = getCirculationUrl(configuration);
+    var response = post(caiaSoftCircUrl, headers, caiaSoftRequest);
     if (response.getStatusCode() == HttpStatus.OK) {
       var okapiToken = sms.getConnectionParameters(configuration.getTenantId()).getOkapiToken();
       remoteStorageService.setRetrieved(retrievalRecord.getItemBarcode(), configuration.getTenantId(), okapiToken);
       log.info("Retrieval record with item barcode {} and request id {} set retrieved", retrievalRecord.getItemBarcode(), retrievalRecord.getHoldId());
     }
     return null;
+  }
+
+  private String getCirculationUrl(Configuration configuration) {
+    return configuration.getUrl().endsWith("/") ? configuration.getUrl() + CAIA_SOFT_CIRCULATION_REQUEST_PATH
+      : configuration.getUrl() + "/" +CAIA_SOFT_CIRCULATION_REQUEST_PATH;
   }
 
   private CaiaSoftRequest getCaiaSoftRequest(RetrievalQueueRecord retrievalRecord) {

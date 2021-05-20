@@ -25,7 +25,7 @@ public interface RemoteStorageClient {
   AccessionItem getAccessionItem (AccessionRequest accessionRequest, @RequestHeader(TENANT) String tenantId,
                                               @RequestHeader(TOKEN) String okapiToken);
 
-  @PostMapping(path = "/retrieve/{remoteConfigurationId}/checkInItemByHoldId", produces = "application/json")
+  @PostMapping(path = "/retrieve/{remoteConfigurationId}/checkInItemByHoldId", produces = "text/plain")
   ResponseEntity<String> checkInByHoldId (@PathVariable("remoteConfigurationId") String configurationId,
                                           CheckInRequest checkInRequest, @RequestHeader(TENANT) String tenantId,
                                           @RequestHeader(TOKEN) String okapiToken);
