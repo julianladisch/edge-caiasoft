@@ -1,6 +1,7 @@
 package org.folio.ed;
 
 import org.folio.ed.controller.AccessionControllerTest;
+import org.folio.ed.controller.ReturnControllerTest;
 import org.folio.ed.controller.CheckInByHoldIdControllerTest;
 import org.folio.ed.handler.RetrievalQueueRecordHandlerTest;
 import org.folio.ed.security.SecureTenantsProducerTest;
@@ -15,6 +16,10 @@ public class TestSuite {
 
   @Nested
   class AccessionControllerTestNested extends AccessionControllerTest {
+  }
+
+  @Nested
+  class ReturnControllerTestNested extends ReturnControllerTest {
   }
 
   @Nested

@@ -1,8 +1,15 @@
 package org.folio.ed.service;
 
+import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 import org.folio.ed.domain.dto.AccessionRequest;
+import org.folio.ed.domain.dto.CheckInItem;
+import org.folio.ed.domain.dto.ReturnItemResponse;
 import org.folio.ed.domain.dto.CheckInRequest;
 import org.folio.ed.domain.dto.Configuration;
 import org.folio.ed.domain.dto.ResultList;
@@ -46,6 +53,16 @@ public class RemoteStorageServiceTest {
   }
 
   @Test
+  void testReturnItem() {
+    var returnItemResponse = new ReturnItemResponse().isHoldRecallRequestExist(false);
+
+    when(remoteStorageClient.returnItemById(isA(String.class), isA(CheckInItem.class), isA(String.class), isA(String.class)))
+      .thenReturn(returnItemResponse);
+
+    remoteStorageService.returnItemByBarcode("itemBarcode", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
+    verify(remoteStorageClient).returnItemById(isA(String.class), isA(CheckInItem.class), isA(String.class), isA(String.class));
+  }
+
   void testCheckInByHoldId() {
     remoteStorageService.checkInByHoldId("be16bad8-2a30-4f1c-bee6-f653ded15627", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
     verify(remoteStorageClient, times(1)).checkInByHoldId("remoteStorageConfigurationId",

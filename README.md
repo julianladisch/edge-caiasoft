@@ -16,6 +16,7 @@ API provides the following URLs for working with remote storage configurations:
 | Method | URL| Description | 
 |---|---|---|
 | GET | /caiasoftService/ItemBarcodes/{itemBarcode}/accessioned/{remoteStorageConfigurationId} | The polling API for accessions |
+| POST | /caiasoftService/RequestBarcodes/{itemBarcode}/reshelved/{remoteStorageConfigurationId} | API for returning an item |
 | POST | /caiasoftService/Requests/{requestId}/route/{remoteStorageConfigurationId} | Сheck-in by requestId and remoteStorageConfigurationId |
 
 ### Deployment information

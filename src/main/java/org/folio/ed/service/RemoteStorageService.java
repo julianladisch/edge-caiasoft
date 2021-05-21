@@ -5,6 +5,8 @@ import org.folio.ed.client.RemoteStorageClient;
 import org.folio.ed.domain.dto.AccessionItem;
 
 import org.folio.ed.domain.dto.AccessionRequest;
+import org.folio.ed.domain.dto.CheckInItem;
+import org.folio.ed.domain.dto.ReturnItemResponse;
 import org.folio.ed.domain.dto.CheckInRequest;
 import org.folio.ed.domain.dto.Configuration;
 import org.folio.ed.domain.dto.RetrievalQueueRecord;
@@ -27,6 +29,10 @@ public class RemoteStorageService {
     return remoteStorageClient.getAccessionItem(new AccessionRequest(remoteStorageConfigurationId, itemBarcode), xOkapiTenant, xOkapiToken);
   }
 
+  public ReturnItemResponse returnItemByBarcode(String itemBarcode, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
+    return remoteStorageClient.returnItemById(remoteStorageConfigurationId, new CheckInItem().itemBarcode(itemBarcode), xOkapiTenant, xOkapiToken);
+  }
+  
   public ResponseEntity<String> checkInByHoldId(String requestId, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
     return remoteStorageClient.checkInByHoldId(remoteStorageConfigurationId, new CheckInRequest(UUID.fromString(requestId)), xOkapiTenant, xOkapiToken);
   }
