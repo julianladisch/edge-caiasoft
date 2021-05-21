@@ -48,8 +48,8 @@ public class RemoteStorageServiceTest {
   @Test
   void testCheckInByHoldId() {
     remoteStorageService.checkInByHoldId("be16bad8-2a30-4f1c-bee6-f653ded15627", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
-    verify(remoteStorageClient, times(1)).checkInByHoldId(eq("remoteStorageConfigurationId"),
-      eq(new CheckInRequest(UUID.fromString("be16bad8-2a30-4f1c-bee6-f653ded15627"))), eq("xOkapiTenant"), eq("xOkapiToken"));
+    verify(remoteStorageClient, times(1)).checkInByHoldId("remoteStorageConfigurationId",
+      new CheckInRequest(UUID.fromString("be16bad8-2a30-4f1c-bee6-f653ded15627")), "xOkapiTenant", "xOkapiToken");
   }
 
   @Test
