@@ -4,7 +4,7 @@ Dsecure_store_props: src/main/resources/ephemeral.properties
 secure_store_props: ${Dsecure_store_props}
 Dsecure_store: Ephemeral
 secure_store: ${Dsecure_store}
-Dcaia_soft_tenants: caiaSoft_tenants
+Dcaia_soft_tenants: caiaSoftClient_tenants
 caia_soft_tenants: ${Dcaia_soft_tenants}
 spring:
   application:
@@ -30,9 +30,12 @@ logging:
     org:
       springframework:
         cache: OFF
-
-server.port: 8081
+      apache:
+        http: DEBUG
+server.port: 8082
 folio.tenant.validation.enabled: false
 
 # configurations update timeframe (millis)
 configurations.update.timeframe: 3600000
+
+

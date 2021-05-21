@@ -23,7 +23,7 @@ API provides the following URLs for working with remote storage configurations:
    needs to know the name of all the tenants, which has CaiaSoft connection. For the ephemeral configuration these names locate in the
    `ephemeral.properties` (key `tenants`). In order to provide it before the deployment the list of tenant names (e.g. ids) should be put to AWS parameters store (as String). The tenant names list separated by
    coma (e.g. diku, someothertenantname) should be stored in AWS param store in the variable with
-   key: `caiaSoft_tenants` by default or could be provided its own key through `caia_soft_tenants` parameter of starting module.
+   key: `caiaSoftClient_tenants` by default or could be provided its own key through `caia_soft_tenants` parameter of starting module.
 2. For each tenant using CaiaSoft the corresponding user should be added
    to the AWS parameter store with key in the following format `caiaSoftClient_{{tenant}}_caiaSoftClient` (where salt and username are the same - `caiaSoftClient`) with value of corresponding `{{password}}` (as Secured String).
    This user should work as ordinary edge institutional user with the only one difference

@@ -12,9 +12,9 @@ public class SecureTenantsProducer {
 
   private SecureTenantsProducer() {}
 
-  public static Optional<String> getTenants(Properties secureStoreProps, SecureStore secureStore, String stagingDirectorTenants) {
+  public static Optional<String> getTenants(Properties secureStoreProps, SecureStore secureStore, String caiaSoftTenants) {
     if (secureStore instanceof TenantAwareAWSParamStore) {
-      var stringOptional = ((TenantAwareAWSParamStore) secureStore).getTenants(stagingDirectorTenants);
+      var stringOptional = ((TenantAwareAWSParamStore) secureStore).getTenants(caiaSoftTenants);
       if (stringOptional.isEmpty()) {
         log.warn("Tenants list not found in AWS Param store. Please create variable, which contains comma separated list of tenants");
       }
