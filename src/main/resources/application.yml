@@ -30,12 +30,8 @@ logging:
     org:
       springframework:
         cache: OFF
-      apache:
-        http: DEBUG
-server.port: 8082
+server.port: 8081
 folio.tenant.validation.enabled: false
 
 # configurations update timeframe (millis)
 configurations.update.timeframe: 3600000
-
-
