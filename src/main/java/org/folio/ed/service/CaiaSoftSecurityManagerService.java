@@ -2,8 +2,8 @@ package org.folio.ed.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.folio.ed.security.CaiaSoftSecureStoreFactory;
 import org.folio.ed.security.SecureTenantsProducer;
-import org.folio.edge.api.utils.security.SecureStoreFactory;
 import org.folio.edgecommonspring.domain.entity.ConnectionSystemParameters;
 import org.folio.edgecommonspring.security.SecurityManagerService;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,7 +45,7 @@ public class CaiaSoftSecurityManagerService {
   @PostConstruct
   public void init() {
     var secureStoreProps = getProperties(secureStorePropsFile);
-    var secureStore = SecureStoreFactory.getSecureStore(secureStoreType, secureStoreProps);
+    var secureStore = CaiaSoftSecureStoreFactory.getSecureStore(secureStoreType, secureStoreProps);
     var tenants = SecureTenantsProducer.getTenants(secureStoreProps, secureStore, caiaSoftTenants);
     tenants.ifPresent(tenantsStr -> caiaSoftUserTenants = Arrays.stream(COMMA.split(tenantsStr))
       .collect(toSet()));
