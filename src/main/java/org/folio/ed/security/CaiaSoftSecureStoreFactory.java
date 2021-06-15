@@ -8,6 +8,8 @@ import java.util.Properties;
 
 public class CaiaSoftSecureStoreFactory {
 
+  private CaiaSoftSecureStoreFactory(){}
+
   public static SecureStore getSecureStore(String secureStoreType, Properties secureStoreProps) {
     if (AwsParamStore.TYPE.equals(secureStoreType)) {
       return new TenantAwareAWSParamStore(secureStoreProps);
