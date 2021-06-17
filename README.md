@@ -32,6 +32,18 @@ API provides the following URLs for working with remote storage configurations:
 3. User `caiaSoftClient` with password `{{password}}` and remote-storage.all permissions should be created on FOLIO. After that apikey can
    be generated for making calls to Edge CaiaSoft API.
 
+### Create CaiaSoft configuration
+1. Log in to Folio, go to "Settings" -> "Remote storage" -> "Configurations", click "New" button.
+2. Enter General information settings:
+* Select "CaiaSoft" in Provider name box
+* Enter Remote storage name
+* Enter remote storage endpoint in URL and key in Credential properties field.
+3. Set Data synchronization schedule. This setting defines timeframe to scan retrieval queues.
+4. Set up Accession holding workflow preference and Returning workflow preference
+5. Click "Save & close" button
+
+*Note: Folio updates CaiaSoft remote storage configuration settings each 60 minutes, so it can take up to one hour before new or edited Remote storage configuration settings will be applied.*
+
 ### Required Permissions
 Institutional users should be granted the following permissions in order to use this edge API:
 - `remote-storage.all`
