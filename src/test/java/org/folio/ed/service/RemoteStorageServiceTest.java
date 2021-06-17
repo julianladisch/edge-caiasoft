@@ -63,6 +63,7 @@ public class RemoteStorageServiceTest {
     verify(remoteStorageClient).returnItemById(isA(String.class), isA(CheckInItem.class), isA(String.class), isA(String.class));
   }
 
+  @Test
   void testCheckInByHoldId() {
     remoteStorageService.checkInByHoldId("be16bad8-2a30-4f1c-bee6-f653ded15627", "remoteStorageConfigurationId", "xOkapiTenant", "xOkapiToken");
     verify(remoteStorageClient, times(1)).checkInByHoldId("remoteStorageConfigurationId",
