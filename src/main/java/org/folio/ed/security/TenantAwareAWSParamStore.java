@@ -11,7 +11,7 @@ import java.util.Properties;
 @Log4j2
 public class TenantAwareAWSParamStore extends AwsParamStore {
 
-  public static final String DEFAULT_AWS_KEY_PARAMETER = "caiaSoftClient_tenants";;
+  public static final String DEFAULT_AWS_KEY_PARAMETER = "caiaSoftClient_tenants";
 
   public TenantAwareAWSParamStore(Properties properties) {
     super(properties);
