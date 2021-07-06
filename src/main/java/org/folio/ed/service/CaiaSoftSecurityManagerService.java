@@ -39,6 +39,9 @@ public class CaiaSoftSecurityManagerService {
   @Value("${caia_soft_tenants}")
   private String caiaSoftTenants;
 
+  @Value("${caia_soft_client}")
+  private String caiaSoftClient;
+
   @Getter
   private Set<String> caiaSoftUserTenants = new HashSet<>();
 
@@ -53,7 +56,7 @@ public class CaiaSoftSecurityManagerService {
 
   public ConnectionSystemParameters getConnectionParameters(String tenantId) {
     var apikey = Base64.getEncoder()
-      .encodeToString(String.format(API_KEY_TEMPLATE, tenantId, CAIA_SOFT_CLIENT_AND_USERNAME, CAIA_SOFT_CLIENT_AND_USERNAME)
+      .encodeToString(String.format(API_KEY_TEMPLATE, tenantId, caiaSoftClient, caiaSoftClient)
       .getBytes(StandardCharsets.UTF_8));
     return sms.getParamsWithToken(apikey);
   }

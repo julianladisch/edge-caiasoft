@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.folio.ed.TestBase;
 import org.folio.ed.domain.dto.ReturnItemResponse;
-import org.folio.spring.integration.XOkapiHeaders;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
