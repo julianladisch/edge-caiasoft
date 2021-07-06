@@ -26,7 +26,6 @@ public class CaiaSoftSecurityManagerService {
 
   private final SecurityManagerService sms;
 
-  public static final String CAIA_SOFT_CLIENT_AND_USERNAME = "caiaSoftClient";
   private static final Pattern COMMA = Pattern.compile(",");
   private static final String API_KEY_TEMPLATE = "{\"t\":\"%s\", \"u\":\"%s\", \"s\":\"%s\"}";
 

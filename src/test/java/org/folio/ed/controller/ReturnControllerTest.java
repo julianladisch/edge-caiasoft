@@ -1,6 +1,5 @@
 package org.folio.ed.controller;
 
-import static org.folio.ed.service.CaiaSoftSecurityManagerService.CAIA_SOFT_CLIENT_AND_USERNAME;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -21,7 +20,7 @@ public class ReturnControllerTest extends TestBase {
   private static final String REMOTE_STORAGE_CONFIGURATION_ID = "de17bad7-2a30-4f1c-bee5-f653ded15629";
   private static final String INVALID_REMOTE_STORAGE_CONFIGURATION_ID = "invalid-uuid";
   private static final String ITEM_BARCODE = "1001";
-  private static final String TENANT_USER_DATA_FOR_APIKEY = "{\"t\":\"test_tenant\", \"u\":\"" + CAIA_SOFT_CLIENT_AND_USERNAME + "\", \"s\":\"salt\"}";
+  private static final String TENANT_USER_DATA_FOR_APIKEY = "{\"t\":\"test_tenant\", \"u\":\"caiaSoftClient\", \"s\":\"salt\"}";
 
   @Test
   void canReturnItem() {
