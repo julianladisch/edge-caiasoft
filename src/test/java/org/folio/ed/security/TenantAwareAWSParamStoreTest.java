@@ -42,7 +42,7 @@ public class TenantAwareAWSParamStoreTest {
   }
 
   @Test
-  void testGetTenantsIfStagingDirectorTenantsValueEmpty() {
+  void testGetTenantsIfTenantsValueEmpty() {
     log.info("=== Test: Get tenants if tenants value is empty ===");
 
     var value = "test_tenant_1, test_user";
@@ -60,7 +60,7 @@ public class TenantAwareAWSParamStoreTest {
   }
 
   @Test
-  void testGetTenantsIfStagingDirectorTenantsValueNotEmpty() {
+  void testGetTenantsIfTenantsValueNotEmpty() {
     log.info("=== Test: Get tenants if tenants value is not empty ===");
 
     var value = "test_tenant_1, test_user";
