@@ -1,4 +1,13 @@
-## 1.1.0 - Unreleased
+## 1.2.0 - Unreleased
+
+## 1.1.0 - Released
+
+The primary focus of this release was to make system user configurable
+
+[Full Changelog](https://github.com/folio-org/edge-caiasoft/compare/v1.0.0...v1.1.0)
+
+### Stories
+* [EDGCSOFT-10](https://issues.folio.org/browse/EDGCSOFT-10) - Improvement: Making system user configurable
 
 ## 1.0.0 - Released
 
