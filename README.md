@@ -28,9 +28,9 @@ API provides the following URLs for working with remote storage configurations:
 #### Rancher and kubernetes deployment
 1. Check that mod-remote-storage has been installed and has been registered to okapi.
 2. Create a new user named `caiaSoftClient` in FOLIO. You may also use `diku_admin` for testing and avoid this step.
-3. Create a secret in the rancher cluster. Make the key of this secret `ephemeral.properties` and the value similar to `secureStore.type=Ephemeral tenants=diku diku=diku_admin,admin,caiaSoftClient`.
+3. Create a secret in the rancher cluster. Make the key of this secret `ephemeral.properties` and the value similar to `secureStore.type=Ephemeral tenants=diku diku=diku_admin,admin`.
 4. Add this secret as a volume mount to the workload for the edge module container. Set the mount point of this volume to `\etc\edge`.
-5. Set the `JAVA_OPTIONS` environment variable for the workload to something similar to `-Dsecure_store_props=/etc/edge/ephemeral.properties -Dokapi_url=http://okapi:9130 -Dlog_level=DEBUG -Dcaia_soft_client=diku_admin`. 
+5. Set the `JAVA_OPTIONS` environment variable for the workload to something similar to `-Dsecure_store_props=/etc/edge/ephemeral.properties -Dokapi_url=http://okapi:9130 -Dlog_level=DEBUG -Dcaia_soft_client=diku_admin` . 
 6. Redeploy the container. This will make the container aware of the new secret and volume mount.
 
 ##### Other rancher considerations
