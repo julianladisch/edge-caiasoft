@@ -91,6 +91,15 @@
     "permanentLocationId": {
       "description": "Permanent location id",
       "$ref": "uuid.json"
+    },
+    "notes": {
+      "description": "Accession item notes",
+      "type": "array",
+      "items": {
+        "description": "Item note",
+        "type": "object",
+        "$ref": "itemNote.json"
+      }
     }
   },
   "additionalProperties": false,

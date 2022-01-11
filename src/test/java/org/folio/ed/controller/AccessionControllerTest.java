@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
-
 import java.util.Base64;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class AccessionControllerTest extends TestBase {
 
@@ -25,5 +26,7 @@ public class AccessionControllerTest extends TestBase {
     var accessionUrl = String.format(ACCESSION_URL, edgePort, ITEM_BARCODE, REMOTE_STORAGE_CONFIGURATION_ID, apikey);
     var response = get(accessionUrl, new HttpHeaders(), AccessionItem.class);
     assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    assertFalse(response.getBody().getNotes().isEmpty());
+    assertThat(response.getBody().getNotes().get(0).getNote(), equalTo("test note"));
   }
 }

@@ -32,7 +32,7 @@ public class RemoteStorageService {
   public ReturnItemResponse returnItemByBarcode(String itemBarcode, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
     return remoteStorageClient.returnItemById(remoteStorageConfigurationId, new CheckInItem().itemBarcode(itemBarcode), xOkapiTenant, xOkapiToken);
   }
-  
+
   public ResponseEntity<String> checkInByHoldId(String requestId, String remoteStorageConfigurationId, String xOkapiTenant, String xOkapiToken) {
     return remoteStorageClient.checkInByHoldId(remoteStorageConfigurationId, new CheckInRequest(UUID.fromString(requestId)), xOkapiTenant, xOkapiToken);
   }
