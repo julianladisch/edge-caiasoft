@@ -46,7 +46,7 @@ public class CaiaSoftIntegrationService {
   public IntegrationFlowContext.IntegrationFlowRegistration registerRetrievalsPoller(Configuration configuration) {
     return integrationFlowContext
       .registration(IntegrationFlows
-        .from(() -> remoteStorageService.getRetrievalQueueRecords(configuration.getId(), configuration.getTenantId(),
+        .fromSupplier(() -> remoteStorageService.getRetrievalQueueRecords(configuration.getId(), configuration.getTenantId(),
           sms.getConnectionParameters(configuration.getTenantId()).getOkapiToken()),
           p -> p.poller(Pollers.fixedDelay(resolvePollingTimeFrame(configuration.getAccessionDelay(),
             configuration.getAccessionTimeUnit()))))
