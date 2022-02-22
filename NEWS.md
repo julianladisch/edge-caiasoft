@@ -1,4 +1,18 @@
-## 1.2.0 - Unreleased
+## 1.3.0 - Unreleased
+
+## 1.2.0 - Released
+
+This release was focused on log4j vulnerability fix and minor improvements
+
+[Full Changelog](https://github.com/folio-org/edge-caiasoft/compare/v1.1.0...v1.2.0)
+
+### Technical tasks
+* [EDGCSOFT-24](https://issues.folio.org/browse/EDGCSOFT-24) - Kiwi R3 2021 - Log4j edge- modules 2.17.0 upgrade
+* [EDGCSOFT-19](https://issues.folio.org/browse/EDGCSOFT-19) - Kiwi R3 2021 - Log4j vulnerability verification and correction
+* [EDGCSOFT-17](https://issues.folio.org/browse/EDGCSOFT-17) - edge-caiasoft: folio-spring-base v3 update
+
+### Stories
+* [EDGCSOFT-31](https://issues.folio.org/browse/EDGCSOFT-31) - Add item notes field to AccessionItem schema
 
 ## 1.1.0 - Released
 
