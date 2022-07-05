@@ -23,21 +23,16 @@
 
   <properties>
     <java.version>11</java.version>
-    <folio-spring-base-version>4.1.0</folio-spring-base-version>
     <openapi-generator.version>5.3.1</openapi-generator.version>
     <mapstruct.version>1.4.1.Final</mapstruct.version>
     <edge-caiasoft.yaml.file>src/main/resources/swagger.api/edge-caiasoft.yaml</edge-caiasoft.yaml.file>
     <sonar.exclusions>src/main/java/org/folio/ed/domain/**</sonar.exclusions>
-    <edge-common-spring.version>2.0.0</edge-common-spring.version>
+    <edge-common-spring.version>2.0.1</edge-common-spring.version>
     <wiremock.version>2.27.2</wiremock.version>
+    <awaitility.version>4.2.0</awaitility.version>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.folio</groupId>
-      <artifactId>folio-spring-base</artifactId>
-      <version>${folio-spring-base-version}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.folio</groupId>
@@ -144,6 +139,12 @@
       <groupId>com.github.tomakehurst</groupId>
       <artifactId>wiremock-standalone</artifactId>
       <version>${wiremock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>${awaitility.version}</version>
       <scope>test</scope>
     </dependency>
 
