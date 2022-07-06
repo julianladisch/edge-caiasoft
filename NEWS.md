@@ -1,4 +1,15 @@
-## 1.3.0 - Unreleased
+## 1.4.0 - Unreleased
+
+## 1.3.0 - Released
+
+This release was contains minor improvements (libraries dependencies cleanup and update)
+
+[Full Changelog](https://github.com/folio-org/edge-caiasoft/compare/v1.2.0...v1.3.0)
+
+### Technical tasks
+* [EDGCSOFT-42](https://issues.folio.org/browse/EDGCSOFT-42) - Clean-up maven duplicate dependencies to the FOLIO libraries
+* [EDGCSOFT-39](https://issues.folio.org/browse/EDGCSOFT-39) - edge-caiasoft: Spring Boot 2.7 for Morning Glory R2 2022
+* [EDGCSOFT-33](https://issues.folio.org/browse/EDGCSOFT-33) - edge-caiasoft: folio-spring-base v4.1.0 update
 
 ## 1.2.0 - Released
 
