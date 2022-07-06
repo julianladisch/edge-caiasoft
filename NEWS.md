@@ -2,7 +2,7 @@
 
 ## 1.3.0 - Released
 
-This release was contains minor improvements (libraries dependencies cleanup and update)
+This release contains minor improvements (libraries dependencies cleanup and update)
 
 [Full Changelog](https://github.com/folio-org/edge-caiasoft/compare/v1.2.0...v1.3.0)
 
