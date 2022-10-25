@@ -1,4 +1,13 @@
-## 1.4.0 - Unreleased
+## 1.5.0 - Unreleased
+
+## 1.4.0 - Released
+
+This release includes minor improvements (libraries dependencies update)
+
+[Full Changelog](https://github.com/folio-org/edge-caiasoft/compare/v1.3.0...v1.4.0)
+
+### Technical tasks
+* [EDGCSOFT-45](https://issues.folio.org/browse/EDGCSOFT-45) - edge-caiasoft: spring upgrade
 
 ## 1.3.0 - Released
 
