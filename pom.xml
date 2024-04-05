@@ -27,6 +27,8 @@
     <mapstruct.version>1.5.3.Final</mapstruct.version>
     <wiremock.version>2.27.2</wiremock.version>
     <awaitility.version>4.2.0</awaitility.version>
+    <snakeyaml.version>2.2</snakeyaml.version>
+    <netty.version>4.1.108.Final</netty.version>
     <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
     <spring-boot-maven-plugin.version>3.1.4</spring-boot-maven-plugin.version>
     <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
