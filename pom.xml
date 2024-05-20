@@ -23,7 +23,7 @@
 
   <properties>
     <java.version>17</java.version>
-    <edge-common-spring.version>2.4.1</edge-common-spring.version>
+    <edge-common-spring.version>2.4.2</edge-common-spring.version>
     <mapstruct.version>1.5.3.Final</mapstruct.version>
     <wiremock.version>3.4.2</wiremock.version>
     <awaitility.version>4.2.0</awaitility.version>
@@ -36,10 +36,28 @@
     <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 
     <edge-caiasoft.yaml.file>src/main/resources/swagger.api/edge-caiasoft.yaml</edge-caiasoft.yaml.file>
-    <sonar.exclusions>src/main/java/org/folio/ed/domain/**</sonar.exclusions>
+    <sonar.exclusions>src/main/java/org/folio/ed/domain/**, src/main/java/org/folio/ed/EdgeCaiaSoftApplication.java</sonar.exclusions>
+    <bc-fips.version>1.0.2.5</bc-fips.version>
+    <bcpkix-fips.version>1.0.7</bcpkix-fips.version>
+    <bctls-fips.version>1.0.19</bctls-fips.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bc-fips</artifactId>
+      <version>${bc-fips.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-fips</artifactId>
+      <version>${bcpkix-fips.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bctls-fips</artifactId>
+      <version>${bctls-fips.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>org.folio</groupId>
@@ -49,6 +67,10 @@
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk18on</artifactId>
         </exclusion>
       </exclusions>
     </dependency>

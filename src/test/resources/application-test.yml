@@ -28,6 +28,9 @@ logging:
         cache: OFF
 
 folio.tenant.validation.enabled: false
+folio.client.okapiUrl: http://localhost:3333
+folio.client.tls.enabled: false
+
 
 # disable scheduling
 app.scheduling.enable: false
