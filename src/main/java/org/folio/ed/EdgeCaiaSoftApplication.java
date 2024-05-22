@@ -11,13 +11,17 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 import java.security.Security;
 
+import static org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider.PROVIDER_NAME;
+
 @SpringBootApplication
 @EnableFeignClients
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class,
   HibernateJpaAutoConfiguration.class})
 public class EdgeCaiaSoftApplication {
   public static void main(String[] args) {
-    Security.addProvider(new BouncyCastleFipsProvider());
+    if (Security.getProvider(PROVIDER_NAME) == null) {
+      Security.addProvider(new BouncyCastleFipsProvider());
+    }
     SpringApplication.run(EdgeCaiaSoftApplication.class, args);
   }
 }
