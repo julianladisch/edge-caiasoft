@@ -1,3 +1,8 @@
+## 2.2.1 2024-05-27
+
+* [EDGCSOFT-62](https://issues.folio.org/browse/EDGCSOFT-62) - Enhance RemoteStorageClient TLS Configuration for Secure Connections to OKAPI
+* [EDGCSOFT-63](https://issues.folio.org/browse/EDGCSOFT-63) - Enhance HTTP Endpoint Security with TLS and FIPS-140-2 Compliant Cryptography
+
 ## 2.2.0 2024-03-19
 
 * [EDGCSOFT-57](https://issues.folio.org/browse/EDGCSOFT-57) - Spring Boot 3.1.6 fixing Denial of Service
