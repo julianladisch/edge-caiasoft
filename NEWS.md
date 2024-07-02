@@ -1,3 +1,12 @@
+## 2.2.3 2024-07-02
+
+* [EDGCSOFT-68](https://issues.folio.org/browse/EDGCSOFT-68) - edge-common-spring 2.4.4, Spring Boot 3.2.6 fixing vulns
+
+
+## 2.2.2 2024-05-29
+
+* [EDGCSOFT-62](https://issues.folio.org/browse/EDGCSOFT-62) - Code enhancement.
+
 ## 2.2.1 2024-05-27
 
 * [EDGCSOFT-62](https://issues.folio.org/browse/EDGCSOFT-62) - Enhance RemoteStorageClient TLS Configuration for Secure Connections to OKAPI
